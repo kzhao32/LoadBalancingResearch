@@ -1,0 +1,46 @@
+	int topographyOverride = -1;		// 0 = 2.5KedgesBalanced, 1 = 5KedgesBalanced, 2 = 10KedgesBalanced, 3 = 20KedgesBalanced, 4 = 2.5KedgesBalanced, 5 = 5KedgesUnbalanced, 6 = 10KedgesUnbalanced, 7 = 20KedgesUnbalanced
+	int numrows = 10;					// set number of rows of agents
+	int numcols = 10;					// set number of columns of agents
+	int N = 1000;						// set number of resources
+	int numEdges = 0;					// set to zero if do not want to use numEdges
+	double CONNECTIVITY_RANGE = 1.28;	// set agent-resource connectivity range
+	double DENSITY = 1;					// set the probability of connection, 1 means to connect if within range
+	double PERIMETER = 0;				// <=0 for agent boarder, >0 for resource boarder
+	double TOP_PERIMETER = 0;			// <=0 for agent boarder, >0 for resource boarder
+	double BOTTOM_PERIMETER = 0;		// <=0 for agent boarder, >0 for resource boarder
+	double LEFT_PERIMETER = 0;			// <=0 for agent boarder, >0 for resource boarder
+	double RIGHT_PERIMETER = 0;			// <=0 for agent boarder, >0 for resource boarder
+	boolean SQUARE_RANGE = false;		// set to false for circular range
+	double densityVariance = 0;			// set to 0 for no resource quota variance
+	double agentBalanceFactor = 0;		// set to 0 or infinity for fair connection distribution (agent quota)
+	int locationAlgorithm = 5;			// 0 = create at PARAMETER, 1 = random, 2 = uniform, 3 = center in-between, 4 = de Moivre's circle, 5 geometric series skew
+	int assignmentAlgorithm = 1;		// 0 = no assignment, 1 = random, 2 = assign to nearest, 3 = higher probability to connect with closer agents, 4 = bidding
+	double RADIUS = 0.65;				// radius of de Moivre's circle (only applies if locationAlgorithm==4)
+	double pGeometric = 1;				// probability of successfully stop creating more resources (only applies if locationAlgorithm==5)
+	boolean shuffle = true;				// if shuffle is off, then balancing algorithms will always look at agent 0 first (good for minMax, bad for offerAccept)
+	String visualsOutputLocation = "C:/AgentResourceSimVisuals/";
+	int[] algorithmBidWhoOrderAndExecution = { 0, 5, 5 };
+	// 0 is based on price; 1 is based on number of connections to resource;
+	// 2 is number of connections to resource's assigned agent; 3 is average price of nearby resources of the resource's assigned agent;
+	// 4 is total price of nearby resources of the resource's assigned agent; 5 is random
+	// 6 is scramble; 10 is the ranking of winning; 11 is the probability of winning
+	int[] algorithmWhoWinsOrderAndExecution = { 0, 4, 4 };
+	// 0 is based on highest bid; 1 is based on lower number of connections
+	// 2 is based on agent with more neighboring agents; 3 is overtime; 4 is random
+	
+	boolean vocal = true;				// used to display outputs such as creating, moving, or removing resources
+	boolean showAlgorithmVisual = false;// used to print algorithms visuals to help visualize algorithms
+	boolean showDebug = false;			// used to print debugging information
+	boolean printASGLabels = false;		// used to display ASG edge labels
+	int DOT_LAYOUT = 2;					// 1 = actual location, 2 = neato, 3 = sfdp, 4 = used for paper,
+	// 10 = updated prices, 11 = bids, 12 = update highest bid of the contested and remove original owners,
+	// 13 = move units to highest bidders and update prices. Clear old bids that did not win
+	double DOT_SCALE = 200;				// visual distance between each agent
+	int batchScale = 100;				// pick a number less than stepScale for different prefix after each batch
+	int stepScale = 1000;				// adjust relative to the batch scale (every improvement path will increase algorithmStep by 1)
+	
+	double[] testTopographyArray = { 2 };
+	
+	// ** DO NOT MODIFY BELOW, CHANGES INGORED *****************************************************
+	int maxID = -1;						// compute maxID for creating new resources
+	int algorithmStep = 5 * stepScale;	// used to determine file output destination

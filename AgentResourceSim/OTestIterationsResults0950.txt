@@ -1,0 +1,6 @@
+customTopographySetup= 4.0
+   n Min-Max 1Offer-1Accept 1Apply-1Give MultipleOffer-MultipleAccept Bidding RichDonateToPoor PoorRobFromRich Centralized-Algorithm   Worst
+   1       6       6       6       6       6       6       6       6       6
+
+
+
